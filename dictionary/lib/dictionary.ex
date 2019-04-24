@@ -9,15 +9,10 @@ defmodule Dictionary do
   # recompile module: r Dictionary
   # compile file: c "lib/dictionary.ex"
 
-  def random_word() do
-    word_list()
-    |> Enum.random()
-  end
+  alias Dictionary.WordList
 
-  def word_list() do
-    "../assets/words.txt"
-    |> Path.expand(__DIR__)
-    |> File.read!()
-    |> String.split(~r/\n/)
-  end
+  defdelegate start(), to: WordList, as: :word_list
+
+  defdelegate random_word(word_list), to: WordList
+
 end

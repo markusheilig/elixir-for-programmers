@@ -7,7 +7,8 @@ defmodule Hangman.Game do
   )
 
   def new_game() do
-    new_game(Dictionary.random_word())
+    word = Dictionary.start() |> Dictionary.random_word()
+    new_game(word)
   end
 
   def new_game(word) do
